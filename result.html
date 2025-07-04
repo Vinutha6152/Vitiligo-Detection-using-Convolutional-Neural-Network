@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results - Vitiligo Detection</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body & Background */
+        body {
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            font-family: 'Arial', Helvetica, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: bgAnimation 4s ease-in-out infinite;
+        }
+
+        /* Animation for Background */
+        @keyframes bgAnimation {
+            0% {
+                background: linear-gradient(#1997b6cc, #072636);
+            }
+            50% {
+                background: linear-gradient(#1997b6cc, #072636);
+            }
+            100% {
+                background: linear-gradient(#1997b6cc, #072636);
+            }
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            animation: slideDown 1s ease-in-out;
+        }
+
+        /* Header Animation */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Main Container */
+        main {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: popIn 1s ease-out;
+            max-width: 500px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        /* Pop-In Animation */
+        @keyframes popIn {
+            0% {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Paragraph Text Styling */
+        main p {
+            font-size: 18px;
+            margin: 15px 0;
+            color: #555;
+            transition: color 0.3s ease;
+        }
+
+        /* Image Styles */
+        main img {
+            margin: 15px 0;
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
+    background-color: #f0f0f0; /* Light gray background behind image if there's extra space */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+        }
+
+        main img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Button Link Styles */
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            color: white;
+            background: #007bff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        a:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            display: inline-block;
+            margin: 10px 0;
+            color: white;
+            background: #ff4d4d;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .logout-btn:hover {
+            background: #e00000;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main p {
+                font-size: 16px;
+            }
+
+            a,
+            .logout-btn {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Analysis Results</h1>
+    </header>
+
+    <!-- Main Section with Results -->
+    <main>
+        <p>Detected Results: <strong style="color: #007bff;">{{ prediction }}</strong></p>
+        <img src="{{ filepath }}" alt="Uploaded Image">
+        <br>
+        <a href="{{url_for('upload')}}">Upload Another Image</a>
+        <a href="{{url_for('logout')}}" class="logout-btn">Logout</a>
+    </main>
+</body>
+</html>

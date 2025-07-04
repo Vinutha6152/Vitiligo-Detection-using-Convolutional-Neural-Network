@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Vitiligo Detection Web Application{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+      min-height: 100vh;
+      animation: bgAnimation 5s ease-in-out infinite;
+      color: #333;
+      transition: background 0.5s ease-in-out;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #555, #777);
+      padding: 10px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #00bcd4;
+      transform: scale(1.1);
+    }
+
+    .flash-message {
+      margin: 10px 0;
+      padding: 10px 20px;
+      border-radius: 6px;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .flash-message.success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .flash-message.error {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 5px 0;
+      }
+
+      .container {
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <nav>
+    <div>
+      <a href="{{ url_for('index') }}">🏠 Home</a>
+    </div>
+    <div>
+      {% if not session.get('user') %}
+        <a href="{{ url_for('signup') }}">🖊️ Signup</a>
+        <a href="{{ url_for('login') }}">🔑 Login</a>
+      {% else %}
+        <a href="{{ url_for('upload') }}">📤 Upload Image</a>
+        <a href="{{ url_for('logout') }}">🚪 Logout</a>
+      {% endif %}
+    </div>
+  </nav>
+
+  <div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash-message {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>

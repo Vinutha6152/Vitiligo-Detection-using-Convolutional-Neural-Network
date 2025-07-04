@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Vitiligo Detection{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; margin: 20px auto; max-width: 1200px;">
+    <!-- Welcome Header -->
+    <h1 style="text-align:center; margin-top:20px; color: #333; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      Welcome to the Vitiligo Detection Web Application
+    </h1>
+    
+    <!-- Introduction Text with Styled Paragraph -->
+    <p style="text-align: center; font-size: 18px; color: #555; margin: 30px auto; transition: color 0.3s ease;" onmouseover="this.style.color='#007bff'" onmouseout="this.style.color='#555'">
+      Explore the features by signing up, logging in, and by uploading images for vitiligo detection using CNN.
+    </p>
+    
+    <!-- Buttons -->
+    <div style="text-align:center; margin-top:20px;">
+      <!-- Signup Button with Hover Animation -->
+      <a href="{{ url_for('signup') }}"
+         style="padding: 12px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: transform 0.3s ease, background-color 0.3s ease; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);"
+         onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#0056b3'"
+         onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#007bff'">
+        Signup
+      </a>
+
+      <!-- Login Button with Hover Animation -->
+      <a href="{{ url_for('login') }}"
+         style="padding: 12px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; transition: transform 0.3s ease, background-color 0.3s ease; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); margin-left: 10px;"
+         onmouseover="this.style.transform='scale(1.1)'; this.style.backgroundColor='#0056b3'"
+         onmouseout="this.style.transform='scale(1)'; this.style.backgroundColor='#007bff'">
+        Login
+      </a>
+    </div>
+  </div>
+
+  <!-- Image Tag with CSS -->
+  <div style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 20px;">
+    <!-- Left Column with Smaller Images -->
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;margin-left:30px;">
+        <img src="/static/images/girlv.jpg" alt="Example Image"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px;margin-left:30px;">
+        <img src="/static/images/vit2.jpg" alt="Example Image"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+      <div style="display: flex; align-items: center;margin-left:30px;">
+        <img src="/static/images/boyvit.jpg" alt="Example Image"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+    </div>
+    
+    <!-- Center Column with Large Image -->
+    <div style="display: flex; justify-content: center; align-items: center; margin: 0 20px;">
+      <img src="/static/images/skin.jpg" alt="Large Example Image"
+           style="width: 590px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+           onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+    </div>
+    
+    <!-- Right Column with Smaller Images -->
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;margin-right:30px;">
+        <img src="/static/images/girlbv.jpg" alt="Right Example Image 1"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 20px;margin-right:30px;">
+        <img src="/static/images/vvv.jpg" alt="Right Example Image 2"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+      <div style="display: flex; align-items: center;margin-right:30px;">
+        <img src="/static/images/vv.jpg" alt="Right Example Image 3"
+             style="width: 200px; height: auto; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.3s ease, box-shadow 0.3s ease;"
+             onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 15px rgba(0,0,0,0.3)'"
+             onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 10px rgba(0,0,0,0.2)'"></img>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+
+
+  <!-- Animation Effects with JavaScript for Scroll-in effects -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.querySelector('h1');
+      const paragraph = document.querySelector('p');
+      
+      // Scroll-in effect for header and intro text
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.transform = 'translateY(0)';
+            entry.target.style.opacity = '1';
+            entry.target.style.transition = 'all 1s ease-in';
+          } else {
+            entry.target.style.transform = 'translateY(-20px)';
+            entry.target.style.opacity = '0';
+          }
+        });
+      });
+
+      observer.observe(header);
+      observer.observe(paragraph);
+    });
+  </script>
+  
+  
+{% endblock %}
