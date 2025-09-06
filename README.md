@@ -1,2 +1,2 @@
 # Vitiligo-Detection-using-Convolutional-Neural-Network
-This is the lightweight project that detects, whether the person is vitiligo affected or not , just by uploading the real time image.
+Vitiligo detection using a Convolutional Neural Network (CNN) that classifies skin images as vitiligo, non-vitiligo, or not an image. Includes training code, model weights, evaluation scripts, and a Flask web app for demoing predictions. Supports real-time skin image detection with an achieved accuracy of 0.86.
